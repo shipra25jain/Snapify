@@ -1,9 +1,17 @@
-Flask / Python Version of the default 'Dreams' project
+Flask / Python Spotify Sample
 ======================================================
 
 Click `"Show"` in the header to see your app live. Updates to your code will instantly deploy and update live.
 
-Your Project
+Getting Started
+------------
+
+1. Get a client ID and secret from [the Spotify for Developers Dashboard](https://beta.developer.spotify.com/dashboard).
+2. Remix this project by editing it or by selecting the remix option in the top left dropdown menu.
+3. Paste your Client ID and Secret into the `.env` file.
+4. Click **Show Live**!
+
+About the Project
 ------------
 
 On the back-end,
