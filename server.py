@@ -99,16 +99,18 @@ def upload():
             
               if ( i < 1):
                 requestBody = {
-                            "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr"
+                            "context_uri": "spotify:track:5ht7ItJgpBH7W6vJ5BqpPr"
                             }
                 print(requestBody)
                 
                 token = request.form['token']
                 
-                auth = {'Authorization': 'Bearer {0}'.format(token)}
+                auth = {"Authorization": "Bearer {0}".format(token)}
                 auth["Content-Type"] = "application/json"
                 print(auth)
-                req = requests.put("https://api.spotify.com/v1/me/player/play", data=requestBody, headers = auth )
+                
+                
+                req = requests.put("https://api.spotify.com/v1/me/player/play", data=json.dumps(requestBody), headers = auth )
                 print(req.text)
                 
             
