@@ -31,7 +31,7 @@ def upload():
     if os.path.isdir(os.path.join(APP_ROOT, 'files/{}'.format(folder_name))):
         print("folder exist")
     '''
-    target = os.path.join(APP_ROOT, 'files/{}'.format(folder_name))
+    target = os.path.join(APP_ROOT, 'spotifyfiles/{}'.format(folder_name))
     print(target)
     if not os.path.isdir(target):
         os.mkdir(target)
@@ -57,7 +57,7 @@ def upload():
 
 @app.route('/upload/<filename>')
 def send_image(filename):
-    return send_from_directory("images", filename)
+    return send_from_directory("spotifyimages", filename)
 
 
 @app.route('/gallery')
