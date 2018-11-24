@@ -42,7 +42,7 @@
 
 <html>
   <head>
-    <title>Spotify SnapMusic</title>
+    <title>SnapMusic</title>
     <meta name="description" content="A cool thing made with Glitch">
     <link id="favicon" rel="icon" href="https://gomix.com/favicon-app.ico" type="image/x-icon">
     <meta charset="utf-8">
@@ -52,7 +52,7 @@
     <link rel="stylesheet" href="/public/style.css">
   </head>
   <body>
-   <header>
+    <header>
       <h1>
         SnapMusic
       </h1>
@@ -60,20 +60,28 @@
         Capture your music
       </h4>
     </header>
+
     <main>
-       <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-        <strong>Capture the mood</strong><br>
-        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-        <div align="center" id="msg"></div>
-        
-       <button class="btn">Snap it!</button>
-      </form>
-      <section class="dreams">
-        <ul id="new-releases" class="sp-container">
-        </ul>
-      </section>
+      
+      <div class="upload-btn-wrapper" >
+        <button class="btn">Snap it!</button>
+        <input type="file" name="myfile" accept="image/*" multiple>
+      </div>
+      
+      <p>
+      </p>
+  <div class="center">
+    <img src="https://cdn.glitch.com/01612371-7c25-4895-b93e-d0bbead60751%2Fimg_list2.PNG?1543091492634" align="center">
+  </div>              
+  
     </main>
+
+    <!-- Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+            crossorigin="anonymous"></script>
     <script src="/public/client.js"></script>
- 
+
   </body>
 </html>
+
