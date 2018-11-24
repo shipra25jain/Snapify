@@ -79,21 +79,18 @@ body {
   display: inline-block;
 }
 
-.btn {
-  display: inline-block; 
-  background: gray;
-  color: #fff;
-  text-transform: uppercase;
-  padding: 20px 30px;
-  border-radius: 5px;
-  box-shadow: 0px 17px 10px -10px rgba(0,0,0,0.4);
-  cursor: pointer;
-  transition: all ease-in-out 300ms;
-  
-  /*&:hover
-    box-shadow: 0px 37px 20px -20px rgba(0,0,0,0.2);
-    transform: translate(0px, -10px) scale(1.2);*/
-}
+.btn{width: 200px;
+    height: 70px;
+    line-height: 0px;
+    text-align: center;
+    margin: 30px auto;
+    position: relative;
+    background: #a22;
+    cursor: pointer;
+    color: #fdd;
+    font-family: lato, helvetica, arial;
+    font-weight: bold;
+    font-size: larger;}
 
 .upload-btn-wrapper input[type=file] {
   font-size: 100px;
