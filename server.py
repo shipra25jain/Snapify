@@ -90,8 +90,10 @@ def upload():
             
             for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
-              result = sp.search(keyword, limit = 1, type='playlists')
-              print(result)
+              result = sp.search(keyword, limit = 1, type='playlist')
+              
+              if(len(result["playlists"]["items"]) >0):
+                print(result["playlists"]["items"][0]["name"].encode('utf-8').strip())
              
             return redirect(url_for('uploaded_file', filename=filename))
     
