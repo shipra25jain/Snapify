@@ -53,20 +53,20 @@ def upload_file():
          <input type=submit value=Upload>
     </form>
     '''
-@app.route('/upload_image', methods=['GET'])
-def upload_image(): #this is old 'def new_releases()' 
+# @app.route('/upload_image', methods=['GET'])
+# def upload_image(): #this is old 'def new_releases()' 
   
-    # Use the country from the query parameters, if provided
-    if 'country' in request.args:
-        country = request.args['country']
-    else:
-        country = 'SE'
+#     # Use the country from the query parameters, if provided
+#     if 'country' in request.args:
+#         country = request.args['country']
+#     else:
+#         country = 'SE'
     
-    # Send request to the Spotify API
-    new_releases = sp.new_releases(country=country, limit=20, offset=0)
+#     # Send request to the Spotify API
+#     new_releases = sp.new_releases(country=country, limit=20, offset=0)
     
-    # Return the list of new releases
-    return jsonify(new_releases)
+#     # Return the list of new releases
+#     return jsonify(new_releases)
 
 if __name__ == '__main__':
     app.run()
