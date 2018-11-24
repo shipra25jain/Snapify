@@ -14,10 +14,13 @@
     <link rel="stylesheet" href="/public/style.css">
   </head>
   <body>
-    <header>
-      <h1 align="center">
-        SNAP MUSIC
+   <header>
+      <h1>
+        SnapMusic
       </h1>
+      <h4>
+        Capture your music
+      </h4>
     </header>
     <main>
        <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
@@ -25,7 +28,7 @@
         <input id="file-picker" type="file" name="file" accept="image/*" multiple>
         <div align="center" id="msg"></div>
         
-        <button class="btn btn-sm btn-yellow" type="submit" id="upload-button">Upload</button>
+       <button class="btn">Snap it!</button>
       </form>
       <section class="dreams">
         <ul id="new-releases" class="sp-container">

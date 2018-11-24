@@ -95,11 +95,12 @@ def upload():
               result = sp.search(keyword, limit = 1, type='playlist')
               
               if(len(result["playlists"]["items"]) >0):
-                print(result["playlists"]["items"][0]["name"].encode('utf-8').strip())
-            
+                print(result["playlists"]["items"])
+                print(result["playlists"]["items"][i]["name"].encode('utf-8').strip())
+              print("hello")
               if ( i < 1):
                 requestBody = {
-                            "context_uri": "spotify:track:5ht7ItJgpBH7W6vJ5BqpPr"
+                            "context_uri": result["playlists"]["items"][0]["uri"].encode('utf-8').strip()
                             }
                 print(requestBody)
                 
