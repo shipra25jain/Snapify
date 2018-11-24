@@ -99,10 +99,7 @@ def upload():
               if ( i < 1):
                 requestBody = {
                             "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
-                            "offset": {
-                                        "position": 5
-                                      },
-                            "position_ms": 0
+                            
                             }
                 
                 token = client_credentials_manager.get_access_token()
@@ -110,7 +107,7 @@ def upload():
                 auth = {'Authorization': 'Bearer {0}'.format(token)}
                 auth["Content-Type"] = "application/json"
                 req = requests.put("https://api.spotify.com/v1/me/player/play", data=requestBody, headers = auth )
-                
+                print(req.text)
                 
             
             return redirect(url_for('uploaded_file', filename=filename))
