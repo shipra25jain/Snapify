@@ -10,7 +10,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from werkzeug.utils import secure_filename
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
-UPLOAD_FOLDER = '/path/to/the/uploads'
+UPLOAD_FOLDER = '/app/images'
 
 # Authenticate with Spotify using the Client Credentials flow
 client_credentials_manager = SpotifyClientCredentials()
@@ -30,6 +30,12 @@ def homepage():
 
     # print(A)
     return render_template('index.html')
+  
+  
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
   
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -54,20 +60,20 @@ def upload():
     return render_template("looking_for_music.html")
   
   
-# @app.route('/upload_image', methods=['GET'])
-# def upload_image(): #this is old 'def new_releases()' 
+@app.route('/upload_image', methods=['GET'])
+def upload_image(): #this is old 'def new_releases()' 
   
-#     # Use the country from the query parameters, if provided
-#     if 'country' in request.args:
-#         country = request.args['country']
-#     else:
-#         country = 'SE'
+    # Use the country from the query parameters, if provided
+    if 'country' in request.args:
+        country = request.args['country']
+    else:
+        country = 'SE'
     
-#     # Send request to the Spotify API
-#     new_releases = sp.new_releases(country=country, limit=20, offset=0)
+    # Send request to the Spotify API
+    new_releases = sp.new_releases(country=country, limit=20, offset=0)
     
-#     # Return the list of new releases
-#     return jsonify(new_releases)
+    # Return the list of new releases
+    return jsonify(new_releases)
 
 if __name__ == '__main__':
     app.run()
