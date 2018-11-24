@@ -90,10 +90,9 @@ def upload():
             
             for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
-              result = sp.search(keyword, limit = 1, type='track')
+              result = sp.search(keyword, limit = 1, type='playlists')
               print(result)
-              rr = json.dumps(result)
-              print(rr[0]["tracks"])
+             
             return redirect(url_for('uploaded_file', filename=filename))
     
     return render_template("looking_for_music.html")
