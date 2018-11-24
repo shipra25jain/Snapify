@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from flask import Flask, request, render_template, jsonify, redirect, url_for
+from flask import Flask, request, render_template, jsonify, redirect, url_for, send_from_directory
 
 # Spotify API wrapper, documentation here: http://spotipy.readthedocs.io/en/latest/
 import spotipy
@@ -10,39 +10,49 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from werkzeug.utils import secure_filename
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
+UPLOAD_FOLDER = '/path/to/the/uploads'
 
 # Authenticate with Spotify using the Client Credentials flow
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 app = Flask(__name__, static_folder='public', template_folder='views')
-APP_ROOT = ""
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
+
 
 @app.route('/')
 def homepage():
-    # Displays homepage
-    print(APP_ROOT)
+
     # print(A)
     return render_template('index.html')
   
 @app.route("/upload", methods=['POST'])
 def upload():
-    print("hi")
-    target = os.path.join(APP_ROOT, 'spotifyimages/')
-    print(target)
-
-    if not os.path.isdir(target):
-        os.mkdir(target)
-    print("i am out")
-    for file in request.files.getlist("file"):
-        print(file)
-        print("iamin")
-        filename = file.filename
-        destination = "/".join([target, filename])
-        print(destination)
-        file.save(destination)
-
-    return render_template("complete.html")
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+    
+    return render_template("looking_for_music.html")
+  
+  
 # @app.route('/upload_image', methods=['GET'])
 # def upload_image(): #this is old 'def new_releases()' 
   
@@ -59,6 +69,5 @@ def upload():
 #     return jsonify(new_releases)
 
 if __name__ == '__main__':
-    print(APP_ROOT)
     app.run()
     
