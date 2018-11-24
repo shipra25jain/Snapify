@@ -8,6 +8,7 @@
 body {
   font-family: Circular, Helvetica arial, sans-serif;
   margin: 70px;
+  background-color: lightblue;
 }
 
 #new-releases {
