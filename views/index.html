@@ -19,38 +19,20 @@
         SnapMusic
       </h1>
     </header>
-
     <main>
       <p>Capture the mood</p>
-      <form>
-        <div class="input-group col-md-6">
-          <select class="form-control">
-            <option value="SE">Sweden</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="GB">United Kingdom</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
-            <option value="JP">Japan</option>
-            <option value="FI">Finland</option>
-            <option value="IS">Iceland</option>
-          </select>
-          <a class="input-group-btn">
-            <button class="btn btn-sm btn-violet" type="submit">Upload picture</button>
-          </a>
-        </div>
+      <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        <strong>Files:</strong><br>
+        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+        <div id="msg"></div>
+        <button class="" type="submit" id="upload-button">Upload picture</button>
+        <button class="btn btn-sm btn-violet" type="submit">Upload picture</button>
+
       </form>
       <section class="dreams">
         <ul id="new-releases" class="sp-container">
         </ul>
       </section>
-      <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-
-        <strong>Files:</strong><br>
-        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-        <div id="msg"></div>
-        <input type="submit" value="Upload!" id="upload-button">
-      </form>
     </main>
 
     <!-- Your web-app is https, so your scripts need to be too -->
