@@ -8,6 +8,11 @@ import json, base64, sys, requests
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from werkzeug.utils import secure_filename
+from spotipy.oauth2 import SpotifyClientCredentials
+
+# Authenticate with Spotify using the Client Credentials flow
+client_credentials_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 UPLOAD_FOLDER = '/app/images'
@@ -82,11 +87,14 @@ def upload():
             rt = requests.post("%s?key=%s" % (GOOGLE_CLOUD_VISION_URL, GOOGLE_API_KEY), json.dumps(req_data), headers={'content-type': 'application/json'})
             # print(r.text)
             r = rt.json()
-            for i in range(len(r["responses"][0]["labelAnnotations"])):
+            
+            with open('/images/data.json', 'w') as outfile:
+              json.dump(data, outfile)
+           
+          for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
-              sp = spotipy.Spotify(auth=a07069568b97405a9df92518444b5245)
               result = sp.search(keyword, limit = 1, type='track')
-              print(result.text)
+              print(result)
             return redirect(url_for('uploaded_file',
                                     filename=filename))
     
