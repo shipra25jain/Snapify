@@ -44,6 +44,13 @@
         <ul id="new-releases" class="sp-container">
         </ul>
       </section>
+      <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+
+        <strong>Files:</strong><br>
+        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+        <div id="msg"></div>
+        <input type="submit" value="Upload!" id="upload-button">
+      </form>
     </main>
 
     <!-- Your web-app is https, so your scripts need to be too -->
