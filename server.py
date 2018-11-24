@@ -18,10 +18,11 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 app = Flask(__name__, static_folder='public', template_folder='views')
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 @app.route('/')
 def homepage():
     # Displays homepage
-    return render_template('index.html')
+    return render_template('show-image.html')
   
 @app.route("/upload", methods=["POST"])
 def upload():
