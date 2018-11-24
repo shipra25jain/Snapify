@@ -16,13 +16,15 @@ client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 app = Flask(__name__, static_folder='public', template_folder='views')
-
+A = os.path.abspath(__file__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 @app.route('/')
 def homepage():
     # Displays homepage
-    return render_template('index.html')
+    print(APP_ROOT)
+    print(A)
+    return render_template('looking_for_music.html')
   
 @app.route("/upload", methods=['POST'])
 def upload():
