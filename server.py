@@ -16,9 +16,8 @@ client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 app = Flask(__name__, static_folder='public', template_folder='views')
-# A = os.path.abspath(__file__)
-# APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-APP_ROOT = "/Users/shiprajain/Downloads/spotify"
+APP_ROOT = ""
+
 @app.route('/')
 def homepage():
     # Displays homepage
@@ -28,6 +27,7 @@ def homepage():
   
 @app.route("/upload", methods=['POST'])
 def upload():
+    print("hi")
     target = os.path.join(APP_ROOT, 'spotifyimages/')
     print(target)
 
