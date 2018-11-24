@@ -13,7 +13,7 @@ header {
 body {
   font-family: Circular, Helvetica arial, sans-serif;
   margin: 90px;
-  background-color: blue;
+  background-color: #ff7f50;
 }
 
 #new-releases {
@@ -62,5 +62,5 @@ body {
 }
 
 #file-picker {
-  border
+  border;
 }
