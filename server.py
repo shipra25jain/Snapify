@@ -3,7 +3,7 @@
 
 import os
 from flask import Flask, request, render_template, jsonify, redirect, url_for, send_from_directory
-import json, base64, sys
+import json, base64, sys, requests
 # Spotify API wrapper, documentation here: http://spotipy.readthedocs.io/en/latest/
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -59,7 +59,7 @@ def upload():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             tempfile = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             
-            img = open(temfile,"rb") # reading file from glitch's local
+            img = open(tempfile,"rb") # reading file from glitch's local
             bitimage = base64.b64encode(img.read())
             img.close()
             
@@ -107,4 +107,46 @@ def upload_image(): #this is old 'def new_releases()'
 
 if __name__ == '__main__':
     app.run()
+    
+################FLASK SPOTIPY#############    
+# import os
+# from flask import Flask, request, render_template, jsonify
+
+# # Spotify API wrapper, documentation here: http://spotipy.readthedocs.io/en/latest/
+# import spotipy
+# from spotipy.oauth2 import SpotifyClientCredentials
+
+# # Authenticate with Spotify using the Client Credentials flow
+# client_credentials_manager = SpotifyClientCredentials()
+# sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+# app = Flask(__name__, static_folder='public', template_folder='views')
+
+# @app.route('/')
+# def homepage():
+#     # Displays homepage
+#     return render_template('index.html')
+  
+# name = fid_dict(predction1)
+# results = sp.search(q='track:' + name, type='track')
+# print results
+
+  
+# @app.route('/new_releases', methods=['GET'])
+# def new_releases():
+  
+#     # Use the country from the query parameters, if provided
+#     if 'country' in request.args:
+#         country = request.args['country']
+#     else:
+#         country = 'SE'
+    
+#     # Send request to the Spotify API
+#     new_releases = sp.new_releases(country=country, limit=20, offset=0)
+    
+#     # Return the list of new releases
+#     return jsonify(new_releases)
+
+# if __name__ == '__main__':
+#     app.run()
     
