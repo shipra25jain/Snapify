@@ -4,11 +4,16 @@
 * {
   box-sizing: border-box;
 }
+header {
+  font-family: Circular, sans-serif;
+  margin: 100px;
+
+}
 
 body {
   font-family: Circular, Helvetica arial, sans-serif;
-  margin: 70px;
-  background-color: black;
+  margin: 90px;
+  background-color: blue;
 }
 
 #new-releases {
