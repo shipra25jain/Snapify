@@ -79,12 +79,13 @@ def upload():
               ]
             }
             
-            r = requests.post("%s?key=%s" % (GOOGLE_CLOUD_VISION_URL, GOOGLE_API_KEY), json.dumps(req_data), headers={'content-type': 'application/json'})
+            rt = requests.post("%s?key=%s" % (GOOGLE_CLOUD_VISION_URL, GOOGLE_API_KEY), json.dumps(req_data), headers={'content-type': 'application/json'})
             # print(r.text)
+            r = rt.json()
             for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
-              sp = spotipy.Spotify()
-              result = sp.search(keyword, limit = 1, type='playlist')
+              sp = spotipy.Spotify(auth=a07069568b97405a9df92518444b5245)
+              result = sp.search(keyword, limit = 1, type='track')
               print(result.text)
             return redirect(url_for('uploaded_file',
                                     filename=filename))
