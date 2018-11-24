@@ -1,6 +1,6 @@
 // client-side js
 // run by the browser each time your view template is loaded
-
+/*
 $(function() {
 
   $('form').submit(function(event) {
@@ -28,6 +28,9 @@ $(function() {
   });
 
 });
+*/
+
+console.log("Hello");
 
 // Get the hash of the url
 const hash = window.location.hash
@@ -58,3 +61,4 @@ const scopes = [
 if (!_token) {
   window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
 }
+
