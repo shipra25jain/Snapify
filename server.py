@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+#from client import spotipy as S 
 from flask import Flask, request, render_template, jsonify, redirect, url_for, send_from_directory
 import json, base64, sys, requests
 # Spotify API wrapper, documentation here: http://spotipy.readthedocs.io/en/latest/
@@ -96,7 +97,7 @@ def upload():
                 print(result["playlists"]["items"][0]["name"].encode('utf-8').strip())
             
               if ( i < 1):
-                sp.start_playback(device_id = None, context_uri = result["playlists"]["items"][0]["id"].encode('utf-8').strip())
+                S.start_playback(device_id = None, context_uri = result["playlists"]["items"][0]["id"].encode('utf-8').strip())
                 
             
             

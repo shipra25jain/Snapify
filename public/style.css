@@ -8,12 +8,12 @@
 body {
   font-family: Circular, Helvetica arial, sans-serif;
   margin: 70px;
-  background-color: lightblue;
+  background-color: black;
 }
 
 #new-releases {
   max-width: 1800px;
-  padding: 40px 0;
+  padding: 400px 0;
 }
 
 .sp-container {
@@ -52,3 +52,6 @@ body {
   margin: 0;
 }
 
+#search-bar {
+  border-radius: 10px;
+}
