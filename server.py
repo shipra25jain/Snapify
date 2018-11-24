@@ -88,15 +88,13 @@ def upload():
             # print(r.text)
             r = rt.json()
             
-            with open('/images/data.json', 'w') as outfile:
-              json.dump(data, outfile)
-           
-          for i in range(len(r["responses"][0]["labelAnnotations"])):
+            for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
               result = sp.search(keyword, limit = 1, type='track')
               print(result)
-            return redirect(url_for('uploaded_file',
-                                    filename=filename))
+              rr = json.dumps(result)
+              print(rr[0]["tracks"])
+            return redirect(url_for('uploaded_file', filename=filename))
     
     return render_template("looking_for_music.html")
   
