@@ -54,7 +54,8 @@ const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'a07069568b97405a9df92518444b5245';
 const redirectUri = 'https://buttercup-visage.glitch.me/';
 const scopes = [
-  'playlist-modify-private'
+  'playlist-modify-private',
+  'user-modify-playback-state'
 ];
 
 // If there is no token, redirect to Spotify authorization

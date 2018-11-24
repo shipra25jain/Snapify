@@ -55,6 +55,7 @@ def upload():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
+        print(request.form['token'])
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
@@ -98,14 +99,15 @@ def upload():
             
               if ( i < 1):
                 requestBody = {
-                            "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
-                            
+                            "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr"
                             }
+                print(requestBody)
                 
-                token = client_credentials_manager.get_access_token()
+                token = request.form['token']
                 
                 auth = {'Authorization': 'Bearer {0}'.format(token)}
                 auth["Content-Type"] = "application/json"
+                print(auth)
                 req = requests.put("https://api.spotify.com/v1/me/player/play", data=requestBody, headers = auth )
                 print(req.text)
                 
