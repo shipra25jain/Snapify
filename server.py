@@ -97,7 +97,18 @@ def upload():
                 print(result["playlists"]["items"][0]["name"].encode('utf-8').strip())
             
               if ( i < 1):
-                S.start_playback(device_id = None, context_uri = result["playlists"]["items"][0]["id"].encode('utf-8').strip())
+                requestBody = {
+                            "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+                            "offset": {
+                                        "position": 5
+                                      },
+                            "position_ms": 0
+                            }
+                
+                req = requests.post("https://api.spotify.com/v1/me/player/play", data=requestBody, headers = auth )
+                
+                auth = {"Authorization: Bearer BQBaMqBpr_eO9qR48mHin6eHRDjYXA7wvg9jPCIdw8rBuqfu6kwEm1yRz43IKp3lToCfHEXeP2C7WYhMA0PuWvVJoydYRbs56RyqDvi7YQGm8ov75H0TgjdbX8l3LXSwfwofivbh9rAKlTrIaGglxM9QxZMlBpoBwoTbq-OjY8w7j30ZFS6fW89YQwD43jFU-R8TVOz_gtpF8z-WARR6cMkVBXQCnglvK_t64ktl3e9aEryMnj1N4BhET7C9Hj6ToRQ815rn2yLXNWvGrtAKNpg"}
+                
                 
             
             
