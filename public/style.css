@@ -5,16 +5,16 @@
   box-sizing: border-box;
 }
 header {
-  font-family: Circular, sans-serif;
+  font-family: Circular, monospace;
   margin: 100px;
   color: white;
 
 }
 
 body {
-  font-family: Circular, Helvetica arial, sans-serif;
+  font-family: Circular, monospace;
   margin: 90px;
-  background-color: #ff7f50;
+  background-color: white;
 }
 
 #new-releases {
