@@ -15,17 +15,17 @@
   </head>
   <body>
     <header>
-      <h1>
+      <h1 align="center">
         SnapMusic
       </h1>
     </header>
     <main>
       <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-        <strong>Capture the mood</strong><br>
-        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
-        <div id="msg"></div>
-        <button class="btn btn-sm btn-violet" type="submit" id="upload-button">Upload</button>
-      </form>
+    <strong>Files:</strong><br>
+    <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+    <div id="msg"></div>
+    <input type="submit" value="Upload!" id="upload-button">
+    </form>
       <section class="dreams">
         <ul id="new-releases" class="sp-container">
         </ul>

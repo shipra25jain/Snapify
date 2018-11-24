@@ -8,7 +8,7 @@ from flask import Flask, request, render_template, jsonify, redirect, url_for
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from werkzeug.utils import secure_filename
-UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__))
+
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 # Authenticate with Spotify using the Client Credentials flow
@@ -16,15 +16,15 @@ client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 app = Flask(__name__, static_folder='public', template_folder='views')
-A = os.path.abspath(__file__)
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-
+# A = os.path.abspath(__file__)
+# APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+APP_ROOT = "/Users/shiprajain/Downloads/spotify"
 @app.route('/')
 def homepage():
     # Displays homepage
     print(APP_ROOT)
-    print(A)
-    return render_template('looking_for_music.html')
+    # print(A)
+    return render_template('index.html')
   
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -33,9 +33,10 @@ def upload():
 
     if not os.path.isdir(target):
         os.mkdir(target)
-
+    print("i am out")
     for file in request.files.getlist("file"):
         print(file)
+        print("iamin")
         filename = file.filename
         destination = "/".join([target, filename])
         print(destination)
