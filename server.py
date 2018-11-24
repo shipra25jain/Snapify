@@ -106,7 +106,7 @@ def upload():
                             }
                 
                 auth = {"Authorization: Bearer BQBaMqBpr_eO9qR48mHin6eHRDjYXA7wvg9jPCIdw8rBuqfu6kwEm1yRz43IKp3lToCfHEXeP2C7WYhMA0PuWvVJoydYRbs56RyqDvi7YQGm8ov75H0TgjdbX8l3LXSwfwofivbh9rAKlTrIaGglxM9QxZMlBpoBwoTbq-OjY8w7j30ZFS6fW89YQwD43jFU-R8TVOz_gtpF8z-WARR6cMkVBXQCnglvK_t64ktl3e9aEryMnj1N4BhET7C9Hj6ToRQ815rn2yLXNWvGrtAKNpg"}
-                
+                auth["Content-Type"] = "application/json"
                 req = requests.put("https://api.spotify.com/v1/me/player/play", data=requestBody, headers = auth )
                 
                 
