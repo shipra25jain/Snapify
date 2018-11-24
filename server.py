@@ -3,7 +3,7 @@
 
 import os
 from flask import Flask, request, render_template, jsonify, redirect, url_for, send_from_directory
-
+import json, base64, sys
 # Spotify API wrapper, documentation here: http://spotipy.readthedocs.io/en/latest/
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -11,6 +11,9 @@ from werkzeug.utils import secure_filename
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 UPLOAD_FOLDER = '/app/images'
+
+GOOGLE_API_KEY = "AIzaSyDShfsGYS3OsyrP46Ea-Lpj_tOvN8fpiVc"
+GOOGLE_CLOUD_VISION_URL = "https://vision.googleapis.com/v1/images:annotate"
 
 # Authenticate with Spotify using the Client Credentials flow
 client_credentials_manager = SpotifyClientCredentials()
@@ -54,6 +57,33 @@ def upload():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            
+            img = open(temfile,"rb") # reading file from glitch's local
+            bitimage = base64.b64encode(img.read())
+            img.close()
+            
+            req_data = {
+              "requests":[
+                {    
+                  "image":{
+                     "content":bitimage
+                  },
+                  "features":[
+                    {
+                      "type":"LABEL_DETECTION",
+                      "maxResults":10
+                    }
+                  ]  
+                }
+              ]
+            }
+            
+            r = requests.post("%s?key=%s" % (GOOGLE_CLOUD_VISION_URL, GOOGLE_API_KEY), json.dumps(req_data), headers={'content-type': 'application/json'})
+            
+            print r.text
+            
+            
             return redirect(url_for('uploaded_file',
                                     filename=filename))
     
