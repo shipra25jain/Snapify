@@ -64,5 +64,14 @@ if (!_token) {
 
 document.getElementById('upload-form').addEventListener('submit', function(event) {
   event.preventDefault();
+  let formData = new FormData();
+  let image = document.getElementById('file-picker').files[0];
+  formData.append("file", image);
+  formData.append("token", _token);
+  
+  var request = new XMLHttpRequest();
+  request.open("POST", document.getElementById('upload-form').action);
+  request.send(formData);
+  
   console.log(event);
 });
