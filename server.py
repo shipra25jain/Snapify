@@ -94,6 +94,8 @@ def upload():
               
               if(len(result["playlists"]["items"]) >0):
                 print(result["playlists"]["items"][0]["name"].encode('utf-8').strip())
+                
+              sp.start_playback
              
             return redirect(url_for('uploaded_file', filename=filename))
     
