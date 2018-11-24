@@ -94,7 +94,12 @@ def upload():
               
               if(len(result["playlists"]["items"]) >0):
                 print(result["playlists"]["items"][0]["name"].encode('utf-8').strip())
-             
+            
+              if ( i < 1):
+                sp.start_playback(device_id = None, context_uri = result["playlists"]["items"][0]["id"].encode('utf-8').strip())
+                
+            
+            
             return redirect(url_for('uploaded_file', filename=filename))
     
     return render_template("looking_for_music.html")
