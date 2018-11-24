@@ -20,7 +20,7 @@ def homepage():
     return render_template('index.html')
   
 @app.route('/new_releases', methods=['GET'])
-def new_releases():
+def image():
   
     # Use the country from the query parameters, if provided
     if 'country' in request.args:
