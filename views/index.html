@@ -62,15 +62,18 @@
     </header>
 
     <main>
-      <div class="upload-btn-wrapper" >
-        <button class="btn">Snap it!</button>
-        <input type="file" name="myfile" accept="image/*" multiple>
-      </div>
+      <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        <strong>Capture the mood</strong><br>
+        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+        <div align="center" id="msg"></div>
+        
+       <button class="btn">Snap it!</button>
+      </form>
       
       <p>
       </p>
   <div class="center">
-    <img src="https://cdn.glitch.com/e8e18e93-6337-45a7-bf30-d9f8fd68aac5%2Fimg_list2.PNG?1543134406918" align="center">
+    <img src="https://cdn.glitch.com/e8e18e93-6337-45a7-bf30-d9f8fd68aac5%2Fimg_list2.PNG?1543134820087" align="center">
   </div>              
   
     </main>
@@ -84,3 +87,8 @@
   </body>
 </html>
 
+      <div class="upload-btn-wrapper" >
+        <button class="btn">Snap it!</button>
+        <input type="file" name="myfile" accept="image/*" multiple>
+      </div>
+*/
