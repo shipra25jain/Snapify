@@ -62,6 +62,9 @@ body {
   border-radius: 10px;
 } */
 
+/* styles */
+/* called by your view template */
+
 * {
   box-sizing: border-box;
 }
