@@ -69,7 +69,7 @@ def upload():
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
-        if file and allowed_file(file.filename):
+        if allowed_file(file.filename):
             filename = secure_filename(file.filename)
             ext = filename.split(".")[1]
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext))
