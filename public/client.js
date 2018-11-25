@@ -46,7 +46,7 @@ const hash = window.location.hash
 window.location.hash = '';
 
 function changeBackground(newcolor) {
-  document.body.style.background = color;
+  document.body.style.background = newcolor;
 }
 
 // Set token
@@ -79,6 +79,8 @@ document.getElementById('file-picker').addEventListener('change', function(event
   var request = new XMLHttpRequest();
   request.open("POST", document.getElementById('upload-form').action);
   request.send(formData);
-  
+  document.body.style.backgroundColor = "#6ae368"
+  document.body.btn.style.backgroundColor = "#000000"
   console.log(event);
+  
 });

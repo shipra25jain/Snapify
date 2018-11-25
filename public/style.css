@@ -90,7 +90,7 @@ body {
     color: #ffffff;
     font-family: lato, helvetica, arial;
     font-weight: bold;
-    font-size: larger;}
+    font-size: 14px;}
 
 .upload-btn-wrapper input[type=file] {
   font-size: 100px;
