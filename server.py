@@ -3,7 +3,7 @@
 
 import os
 #from client import spotipy as S 
-from flask import Flask, request, render_template, jsonify, redirect, url_for, send_from_directory
+from flask import Flask, request, render_template, jsonify, redirect, url_for, send_from_directory, send_file
 import json, base64, sys, requests
 # Spotify API wrapper, documentation here: http://spotipy.readthedocs.io/en/latest/
 import spotipy
@@ -45,7 +45,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route("/getimage" methods=['GET'])
+#@app.route("/getimage" methods=['GET'])
 
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -63,7 +63,8 @@ def upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            ext = filename.split(".")[0]
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext))
             tempfile = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             # imagedataFile = open('/app/public/imagedataFile.txt','w')
             # imagedataFile.write(tempfile)
