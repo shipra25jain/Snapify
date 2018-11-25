@@ -57,6 +57,7 @@ def getimage():
 
 @app.route("/upload", methods=['POST'])
 def upload():
+    print("_HEFJIFNEFI")
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -66,6 +67,7 @@ def upload():
         print(request.form['token'])
         # if user does not select file, browser also
         # submit a empty part without filename
+        
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
