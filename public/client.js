@@ -113,4 +113,11 @@ document.getElementById('file-picker').addEventListener('change', function(event
   }, 3000);
   document.getElementById("main_img").src = "/getimage";
   // readTextFile('/app/public/imagedataFile.txt')
+  
+  setTimeout(function(){
+    //do what you need here
+  }, 1000);
+  
+  var tt = "/clearCache";
+      
 });

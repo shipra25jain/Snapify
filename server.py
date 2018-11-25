@@ -51,9 +51,14 @@ def allowed_file(filename):
 def getimage():
     filename = '/app/images/input_image' + ".jpg" 
     return send_file(filename)
-  
+
+@app.route("/clearCache")
+def clearCache():
+    os.remove("/app/images/input_image.jpg")
     
-  
+    return "Foo" 
+
+
 
 @app.route("/upload", methods=['POST'])
 def upload():
