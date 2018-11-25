@@ -69,7 +69,7 @@ body {
 body {
   font-family: Circular, 'Helvetica arial', sans-serif;
   margin: 70px;
-  background-color: #ff73732b;
+  background-color: #fffc00;
   text-align: center;
 }
 
@@ -85,9 +85,9 @@ body {
     text-align: center;
     margin: 30px auto;
     position: relative;
-    background: #a22;
+    background: #3ed3f9;
     cursor: pointer;
-    color: #fdd;
+    color: #ffffff;
     font-family: lato, helvetica, arial;
     font-weight: bold;
     font-size: larger;}
@@ -140,7 +140,7 @@ img {
 }
 
 .sp-cover:hover {
-  box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 0 1000px rgb(62, 211, 249);
 }
 
 .sp-title {
