@@ -93,23 +93,25 @@ def upload():
             for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
               result = sp.search(keyword, limit = 1, type='playlist')
-              print(
-              for j in range(len(result["playlists"]["items"]))
-                print(result["playlists"]["items"][j]["name"].encode('utf-8').strip())
-                requestBody = {
-                            "context_uri": result["playlists"]["items"][0]["uri"].encode('utf-8').strip()
-                            }
-                print(requestBody)
+              print("here is result" + str(i))
+              print(result)
+              print(keyword)
+              if(len(result["playlists"]["items"]>0)):
+#                 print(result["playlists"]["items"][j]["name"].encode('utf-8').strip())
+#                 requestBody = {
+#                             "context_uri": result["playlists"]["items"][0]["uri"].encode('utf-8').strip()
+#                             }
+#                 print(requestBody)
                 
-                token = request.form['token']
+#                 token = request.form['token']
                 
-                auth = {"Authorization": "Bearer {0}".format(token)}
-                auth["Content-Type"] = "application/json"
-                print(auth)
+#                 auth = {"Authorization": "Bearer {0}".format(token)}
+#                 auth["Content-Type"] = "application/json"
+#                 print(auth)
                 
                 
-                req = requests.put("https://api.spotify.com/v1/me/player/play", data=json.dumps(requestBody), headers = auth )
-                print(req.text)
+#                 req = requests.put("https://api.spotify.com/v1/me/player/play", data=json.dumps(requestBody), headers = auth )
+#                 print(req.text)
                 
             
             return redirect(url_for('uploaded_file', filename=filename))
