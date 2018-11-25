@@ -62,14 +62,14 @@ const scopes = [
 if (!_token) {
   window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
 }
-function show_image(src, width, height, alt) {
+/*function show_image(src, width, height, alt) {
   var img = document.createElement("img");
   img.src = src;
   img.width = width;
   img.height = height;
   img.alt = alt;
   document.body.appendChild(img);
-}
+}*/
 
 document.getElementById('file-picker').addEventListener('change', function(event) {
   event.preventDefault();
@@ -77,7 +77,8 @@ document.getElementById('file-picker').addEventListener('change', function(event
   let image = document.getElementById('file-picker').files[0];
   formData.append("file", image);
   formData.append("token", _token);
-  
+  document.getElementById("main_img").src = image.url
+  console.log(image);
   console.log("it is working!");
   
   var request = new XMLHttpRequest();
@@ -85,7 +86,6 @@ document.getElementById('file-picker').addEventListener('change', function(event
   request.send(formData);
   document.body.style.backgroundColor = "#6ae368"
   document.body.btn.style.backgroundColor = "#000000"
-  show_image(image, 276, 110, 'input image');
   console.log(event);
 
   
