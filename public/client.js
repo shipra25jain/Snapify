@@ -112,6 +112,6 @@ document.getElementById('file-picker').addEventListener('change', function(event
   var newImg = "/app/images/";
   console.log(newImg.concat(image.name));
   
-  document.getElementById("main_img").src = newImg.concat(image.name);
+  document.getElementById("main_img").src = "/getimage";
   // readTextFile('/app/public/imagedataFile.txt')
 });

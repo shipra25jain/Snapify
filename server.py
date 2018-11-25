@@ -45,7 +45,11 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-#@app.route("/getimage" methods=['GET'])
+@app.route("/getimage")
+def getimage():
+    filename = '/app/images/input_image' + ".png" 
+    return send_file(filename)
+  
 
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -116,8 +120,7 @@ def upload():
                 req = requests.put("https://api.spotify.com/v1/me/player/play", data=json.dumps(requestBody), headers = auth )
                 print(req.text)
                 
-            
-            return redirect(url_for('uploaded_file', filename=filename))
+          
     
     return render_template("looking_for_music.html")
 
