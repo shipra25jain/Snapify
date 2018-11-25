@@ -15,6 +15,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
+
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 UPLOAD_FOLDER = '/app/images'
 
@@ -45,9 +46,9 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route("/getimage")
+@app.route("/getimage", methods=['GET'])
 def getimage():
-    filename = '/app/images/input_image' + ".png" 
+    filename = '/app/images/input_image' + ".jpg" 
     return send_file(filename)
   
 
@@ -67,9 +68,9 @@ def upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            ext = filename.split(".")[0]
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext))
-            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext)
+            ext = filename.split(".")[1]
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + "jpg"))
+            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + "jpg")
             # imagedataFile = open('/app/public/imagedataFile.txt','w')
             # imagedataFile.write(tempfile)
             # imagedataFile.close()
@@ -122,7 +123,7 @@ def upload():
                 
           
     
-    return render_template("looking_for_music.html")
+    return render_template("show-snapmusic.html")
 
 
 if __name__ == '__main__':
