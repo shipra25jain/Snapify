@@ -70,16 +70,33 @@ if (!_token) {
   img.alt = alt;
   document.body.appendChild(img);
 }*/
-
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    document.getElementById("main_img").src = allText;
+    rawFile.send(null);
+}
 document.getElementById('file-picker').addEventListener('change', function(event) {
   event.preventDefault();
   let formData = new FormData();
   let image = document.getElementById('file-picker').files[0];
   formData.append("file", image);
   formData.append("token", _token);
-  document.getElementById("main_img").src = image.url
-  image.url = image.url.replace("http","https");
-  console.log(image.url);
+  // document.getElementById("main_img").src = image.url
+  // image.url = image.url.replace("http","https");
+  // console.log(image.url);
   console.log("it is working!");
   
   var request = new XMLHttpRequest();
@@ -92,5 +109,5 @@ document.getElementById('file-picker').addEventListener('change', function(event
   setTimeout(function(){
     console.log('after');
   },500);
-  
+  readTextFile('/app/public/imagedataFile.txt')
 });
