@@ -127,7 +127,7 @@ def upload():
                 print(req.text)
                 
             
-            return redirect(url_for('get_image'))
+            return redirect(url_for('uploaded_'))
     
     return render_template("looking_for_music.html")
 
