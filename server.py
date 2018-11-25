@@ -26,7 +26,7 @@ GOOGLE_CLOUD_VISION_URL = "https://vision.googleapis.com/v1/images:annotate"
 # Authenticate with Spotify using the Client Credentials flow
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
+resulttrack ="global"
 app = Flask(__name__, static_folder='public', template_folder='views')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -55,8 +55,8 @@ def getimage():
 @app.route("/clearCache")
 def clearCache():
     os.remove("/app/images/input_image.jpg")
-    
-    return "Foo" 
+    print(resulttrack)
+    return resulttrack 
 
 
 
@@ -114,6 +114,7 @@ def upload():
                 print(result["playlists"]["items"][0]["name"].encode('utf-8').strip())
               
               if ( i < 1):
+                resulttrack = result["playlists"]["items"][0]["name"].encode('utf-8').strip()
                 requestBody = {
                             "context_uri": result["playlists"]["items"][0]["uri"].encode('utf-8').strip()
                             }

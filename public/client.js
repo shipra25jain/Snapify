@@ -111,12 +111,18 @@ document.getElementById('file-picker').addEventListener('change', function(event
   
   setTimeout(function(){
     document.getElementById("main_img").src = "/getimage";
-  }, 10000);
+  }, 8000);
   
   // readTextFile('/app/public/imagedataFile.txt')
   
+  
+  
   setTimeout(function(){
-    var tt = "/clearCache";
+    
+    document.getElementById("playlist").textContent="/clearCache";
+    // var tt = "/clearCache";
+    
+    
   }, 500);
   
   
