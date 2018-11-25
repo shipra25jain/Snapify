@@ -64,7 +64,14 @@
     <main>
       <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
         <strong>Capture the mood</strong><br>
-        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+        <!--input id="file-picker" type="file" name="file" accept="image/*" multiple>-->
+        
+        <div class="upload-btn-wrapper">
+          <button class="btn">Snap it!</button>
+          <input id="file-picker" type="file" name="file" accept="image/*" multiple>
+        </div>
+      
+        
         <div align="center" id="msg"></div>
         
        <button class="btn">Snap it!</button>
@@ -86,9 +93,3 @@
 
   </body>
 </html>
-
-      <div class="upload-btn-wrapper" >
-        <button class="btn">Snap it!</button>
-        <input type="file" name="myfile" accept="image/*" multiple>
-      </div>
-*/
