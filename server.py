@@ -52,10 +52,10 @@ def getimage():
     filename = '/app/images/input_image' + ".jpg" 
     return send_file(filename)
 
-@app.route("/clearCache")
+@app.route("/clearCache", methods=['GET'])
 def clearCache():
     os.remove("/app/images/input_image.jpg")
-    print(resulttrack)
+    print("our track is " + resulttrack)
     return resulttrack 
 
 

@@ -119,7 +119,7 @@ document.getElementById('file-picker').addEventListener('change', function(event
   
   setTimeout(function(){
     
-    document.getElementById("playlist").textContent="/clearCache";
+    document.getElementById("playlist").src="/clearCache";
     // var tt = "/clearCache";
     
     
