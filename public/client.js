@@ -102,13 +102,13 @@ document.getElementById('file-picker').addEventListener('change', function(event
   
   var request = new XMLHttpRequest();
   request.open("POST", document.getElementById('upload-form').action);
+  
+  
   request.send(formData);
   document.body.style.backgroundColor = "#6ae368"
   console.log(event);
   console.log('before');
-  setTimeout(function(){
-    console.log('after');
-  },1000);
+  
   
   request.open("POST", document.getElementById('main_img').action);
   

@@ -47,8 +47,8 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route("/getimage" methods=['GET'])
 
+@app.route("/getimage" methods=['GET'])
 
 def get_image():
     
@@ -128,7 +128,7 @@ def upload():
                 print(req.text)
                 
             
-            return redirect(url_for('uploaded_file', filename=filename))
+            return redirect(url_for('get_image'))
     
     return render_template("looking_for_music.html")
 
