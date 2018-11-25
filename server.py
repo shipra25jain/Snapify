@@ -93,25 +93,26 @@ def upload():
             for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
               result = sp.search(keyword, limit = 1, type='playlist')
-              print("here is result" + str(i))
-              print(result)
-              print(keyword)
-              if(len(result["playlists"]["items"]>0)):
-#                 print(result["playlists"]["items"][j]["name"].encode('utf-8').strip())
-#                 requestBody = {
-#                             "context_uri": result["playlists"]["items"][0]["uri"].encode('utf-8').strip()
-#                             }
-#                 print(requestBody)
+              
+              if(len(result["playlists"]["items"]) >0):
+                print(result["playlists"]["items"])
+                print(result["playlists"]["items"][i]["name"].encode('utf-8').strip())
+              print("hello")
+              if ( i < 1):
+                requestBody = {
+                            "context_uri": result["playlists"]["items"][0]["uri"].encode('utf-8').strip()
+                            }
+                print(requestBody)
                 
-#                 token = request.form['token']
+                token = request.form['token']
                 
-#                 auth = {"Authorization": "Bearer {0}".format(token)}
-#                 auth["Content-Type"] = "application/json"
-#                 print(auth)
+                auth = {"Authorization": "Bearer {0}".format(token)}
+                auth["Content-Type"] = "application/json"
+                print(auth)
                 
                 
-#                 req = requests.put("https://api.spotify.com/v1/me/player/play", data=json.dumps(requestBody), headers = auth )
-#                 print(req.text)
+                req = requests.put("https://api.spotify.com/v1/me/player/play", data=json.dumps(requestBody), headers = auth )
+                print(req.text)
                 
             
             return redirect(url_for('uploaded_file', filename=filename))
@@ -119,10 +120,63 @@ def upload():
     return render_template("looking_for_music.html")
   
   
-
+@app.route('/upload_image', methods=['GET'])
+def upload_image(): #this is old 'def new_releases()' 
+  
+    # Use the country from the query parameters, if provided
+    if 'country' in request.args:
+        country = request.args['country']
+    else:
+        country = 'SE'
+    
+    # Send request to the Spotify API
+    new_releases = sp.new_releases(country=country, limit=20, offset=0)
+    
+    # Return the list of new releases
+    return jsonify(new_releases)
 
 if __name__ == '__main__':
     app.run()
     
+################FLASK SPOTIPY#############    
+# import os
+# from flask import Flask, request, render_template, jsonify
 
+# # Spotify API wrapper, documentation here: http://spotipy.readthedocs.io/en/latest/
+# import spotipy
+# from spotipy.oauth2 import SpotifyClientCredentials
+
+# # Authenticate with Spotify using the Client Credentials flow
+# client_credentials_manager = SpotifyClientCredentials()
+# sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+# app = Flask(__name__, static_folder='public', template_folder='views')
+
+# @app.route('/')
+# def homepage():
+#     # Displays homepage
+#     return render_template('index.html')
+  
+# name = fid_dict(predction1)
+# results = sp.search(q='track:' + name, type='track')
+# print results
+
+  
+# @app.route('/new_releases', methods=['GET'])
+# def new_releases():
+  
+#     # Use the country from the query parameters, if provided
+#     if 'country' in request.args:
+#         country = request.args['country']
+#     else:
+#         country = 'SE'
+    
+#     # Send request to the Spotify API
+#     new_releases = sp.new_releases(country=country, limit=20, offset=0)
+    
+#     # Return the list of new releases
+#     return jsonify(new_releases)
+
+# if __name__ == '__main__':
+#     app.run()
     
