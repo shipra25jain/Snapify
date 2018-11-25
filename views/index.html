@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 
-<!-- <html>
+<html>
   <head>
     <title>Snapify</title>
     <meta name="description" content="Explore music using your Camera!">
@@ -29,7 +29,7 @@
 
     <main>
       <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
-        <!--input id="file-picker" type="file" name="file" accept="image/*" multiple>-->
+        <input id="file-picker" type="file" name="file" accept="image/*" multiple>
         
 <!--         <div class="upload-btn-wrapper">
           <button class="btn">Snap it!</button>
@@ -58,52 +58,7 @@
     <script src="/public/client.js"></script>
 
   </body>
-</html> -->
-
-<html>
-  <head> 
-    <title>Snapify</title>
-    <meta name="description" content="A cool thing made with Glitch">
-    <link id="favicon" rel="icon" href="https://gomix.com/favicon-app.ico" type="image/x-icon">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/public/style.css">
-  </head>
-  
-  <body>
-    <header>
-      <img class="img2" src="https://cdn.glitch.com/01612371-7c25-4895-b93e-d0bbead60751%2FOfficial_Snapify_logo.png?1543151049074"/>
-      <div class="content-heading"><h1>Snapify</h1></div>
-      <h4>
-        Capture your music
-      </h4>
-    </header>
-
-    <main>
-      
-      <div class="upload-btn-wrapper" >
-        <button class="btn">Snap it!</button>
-        <input type="file" name="myfile" accept="image/*" multiple>
-      </div>
-      
-      <p>
-      </p>
-  <div class="center">
-    <img class="img3" src="https://cdn.glitch.com/01612371-7c25-4895-b93e-d0bbead60751%2Fsample.PNG?1543152504102" align="center">
-  </div>              
-  
-    </main>
-
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
-    <script src="/public/client.js"></script>
-
-  </body>
-</html>
+</html> 
 
 
 

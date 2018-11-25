@@ -123,7 +123,7 @@ def upload():
                 req = requests.put("https://api.spotify.com/v1/me/player/play", data=json.dumps(requestBody), headers = auth )
                 print(req.text)
                 
-                os.remove('/app/image/input_image.jpg')
+                
     
     return render_template("show-snapmusic.html")
 
