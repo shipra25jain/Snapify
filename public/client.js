@@ -45,6 +45,10 @@ const hash = window.location.hash
 }, {});
 window.location.hash = '';
 
+function changeBackground(newcolor) {
+  document.body.style.background = color;
+}
+
 // Set token
 let _token = hash.access_token;
 
