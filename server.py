@@ -48,12 +48,9 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/getimage" methods=['GET'])
-
-def get_image():
-    
-    filename = 'app/images/input_image' + "." + ext
-    
+@app.route("/getimage", methods=['GET'])
+def getimage():
+    filename = '/app/images/input_image' + ".png"
     return send_file(filename)
   
   
