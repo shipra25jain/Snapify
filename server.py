@@ -73,7 +73,7 @@ def upload():
             filename = secure_filename(file.filename)
             ext = filename.split(".")[1]
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext))
-            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext)
             # imagedataFile = open('/app/public/imagedataFile.txt','w')
             # imagedataFile.write(tempfile)
             # imagedataFile.close()
@@ -100,7 +100,7 @@ def upload():
             rt = requests.post("%s?key=%s" % (GOOGLE_CLOUD_VISION_URL, GOOGLE_API_KEY), json.dumps(req_data), headers={'content-type': 'application/json'})
             # print(r.text)
             r = rt.json()
-            
+            print(r)
             for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
               result = sp.search(keyword, limit = 1, type='playlist')
