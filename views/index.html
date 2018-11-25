@@ -16,12 +16,8 @@
   </head>
   <body>
     <header>
-      <h1>
-       
-  
-        Snapify
-        
-      </h1>
+      <img class="img2" src="https://cdn.glitch.com/01612371-7c25-4895-b93e-d0bbead60751%2FOfficial_Snapify_logo.png?1543151049074"/>
+        <div class="content-heading"><h1>Snapify</h1></div>
       <h4>
         Capture the music
       </h4>
@@ -31,7 +27,7 @@
       <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
         <input id="file-picker" type="file" name="file" accept="image/*" multiple>
         
-<!--         <div class="upload-btn-wrapper">
+       <div class="upload-btn-wrapper">
           <button class="btn">Snap it!</button>
           <input id="file-picker" type="file" name="file" accept="image/*" multiple>
         
@@ -51,8 +47,8 @@
   
     </main>
 
-    <!-- Your web-app is https, so your scripts need to be too -->
-<!--     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+   <!--Your web-app is https, so your scripts need to be too -->
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
             integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
             crossorigin="anonymous"></script>
     <script src="/public/client.js"></script>
