@@ -78,7 +78,7 @@ document.getElementById('file-picker').addEventListener('change', function(event
   formData.append("file", image);
   formData.append("token", _token);
   document.getElementById("main_img").src = image.url
-  console.log(image);
+  console.log(image.url);
   console.log("it is working!");
   
   var request = new XMLHttpRequest();
