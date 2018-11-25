@@ -15,6 +15,8 @@ from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
+ext = ""
+
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 UPLOAD_FOLDER = '/app/images'
 
@@ -45,7 +47,16 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-#@app.route("/getimage" methods=['GET'])
+@app.route("/getimage" methods=['GET'])
+
+
+def get_image():
+    
+    filename = 'app/images/input_image' + "." + ext
+    
+    return send_file(filename)
+  
+  
 
 @app.route("/upload", methods=['POST'])
 def upload():
@@ -63,7 +74,7 @@ def upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            ext = filename.split(".")[0]
+            ext = filename.split(".")[1]
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext))
             tempfile = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             # imagedataFile = open('/app/public/imagedataFile.txt','w')

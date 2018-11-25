@@ -109,9 +109,9 @@ document.getElementById('file-picker').addEventListener('change', function(event
   setTimeout(function(){
     console.log('after');
   },1000);
-  var newImg = "/app/images/";
-  console.log(newImg.concat(image.name));
   
-  document.getElementById("main_img").src = newImg.concat(image.name);
+  request.open("POST", document.getElementById('main_img').action);
+  
+  document.getElementById("main_img").src = "/app/images/input_image";
   // readTextFile('/app/public/imagedataFile.txt')
 });
