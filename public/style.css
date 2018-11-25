@@ -77,7 +77,6 @@ body {
   position: relative;
   overflow: hidden;
   display: inline-block;
-  transition:all .5s ease;
 }
 
 .btn{width: 214px;
@@ -92,11 +91,6 @@ body {
     font-family: lato, helvetica, arial;
     font-weight: bold;
     font-size: 14px;}
-    
-
-.btn:hover .eff-1{
-  right:0;
-}
 
 .upload-btn-wrapper input[type=file] {
   font-size: 100px;

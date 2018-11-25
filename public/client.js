@@ -112,7 +112,6 @@ document.getElementById('file-picker').addEventListener('change', function(event
   
   request.open("POST", document.getElementById('main_img').action);
   
-  // document.getElementById("main_img").src = "/getimage";
-  
+  document.getElementById("main_img").src = "/app/images/input_image";
   // readTextFile('/app/public/imagedataFile.txt')
 });

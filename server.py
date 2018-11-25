@@ -15,7 +15,7 @@ from spotipy.oauth2 import SpotifyClientCredentials
 client_credentials_manager = SpotifyClientCredentials()
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-ext = ''
+ext = ""
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 UPLOAD_FOLDER = '/app/images'
@@ -48,16 +48,18 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/getimage", methods=['GET'])
-def getimage():
-    filename = '/app/images/input_image' + ".png"
+@app.route("/getimage" methods=['GET'])
+
+def get_image():
+    
+    filename = 'app/images/input_image' + "." + ext
+    
     return send_file(filename)
   
   
 
 @app.route("/upload", methods=['POST'])
 def upload():
-    print("_HEFJIFNEFI")
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -67,15 +69,14 @@ def upload():
         print(request.form['token'])
         # if user does not select file, browser also
         # submit a empty part without filename
-        
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
-        if allowed_file(file.filename):
+        if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             ext = filename.split(".")[1]
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext))
-            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext)
+            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             # imagedataFile = open('/app/public/imagedataFile.txt','w')
             # imagedataFile.write(tempfile)
             # imagedataFile.close()
@@ -102,7 +103,7 @@ def upload():
             rt = requests.post("%s?key=%s" % (GOOGLE_CLOUD_VISION_URL, GOOGLE_API_KEY), json.dumps(req_data), headers={'content-type': 'application/json'})
             # print(r.text)
             r = rt.json()
-            print(r)
+            
             for i in range(len(r["responses"][0]["labelAnnotations"])):
               keyword = r["responses"][0]["labelAnnotations"][i]["description"]
               result = sp.search(keyword, limit = 1, type='playlist')
@@ -127,7 +128,7 @@ def upload():
                 print(req.text)
                 
             
-            return redirect(url_for('uploaded_file', filename=filename))
+            return redirect(url_for('get_image'))
     
     return render_template("looking_for_music.html")
 
