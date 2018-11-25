@@ -5,3 +5,4 @@ spotipy
 werkzeug
 json
 base64
+cv2

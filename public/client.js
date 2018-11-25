@@ -63,12 +63,14 @@ if (!_token) {
   window.location = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&response_type=token&show_dialog=true`;
 }
 
-document.getElementById('haha').addEventListener('submit', function(event) {
+document.getElementById('upload-form').addEventListener('submit', function(event) {
   event.preventDefault();
   let formData = new FormData();
   let image = document.getElementById('file-picker').files[0];
   formData.append("file", image);
   formData.append("token", _token);
+  
+  console.log("it is working!");
   
   var request = new XMLHttpRequest();
   request.open("POST", document.getElementById('upload-form').action);
