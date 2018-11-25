@@ -106,9 +106,6 @@ document.getElementById('file-picker').addEventListener('change', function(event
   document.body.style.backgroundColor = "#6ae368"
   console.log(event);
   console.log('before');
-  setTimeout(function(){
-    console.log('after');
-  },1000);
   var newImg = "/app/images/";
   console.log(newImg.concat(image.name));
   

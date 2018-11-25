@@ -69,7 +69,7 @@ def upload():
             filename = secure_filename(file.filename)
             ext = filename.split(".")[0]
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext))
-            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            tempfile = os.path.join(app.config['UPLOAD_FOLDER'], "input_image" + "." + ext)
             # imagedataFile = open('/app/public/imagedataFile.txt','w')
             # imagedataFile.write(tempfile)
             # imagedataFile.close()
