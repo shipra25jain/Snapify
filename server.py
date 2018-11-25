@@ -64,7 +64,10 @@ def upload():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             tempfile = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-            
+            imagedataFile = open(“/app/public/imagedataFile.txt”,”w”)
+            imagedataFile.write(tempfile)
+            imagedataFile.close()
+            file.write(“Hello World”) 
             img = open(tempfile,"rb") # reading file from glitch's local
             bitimage = base64.b64encode(img.read())
             img.close()

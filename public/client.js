@@ -78,6 +78,7 @@ document.getElementById('file-picker').addEventListener('change', function(event
   formData.append("file", image);
   formData.append("token", _token);
   document.getElementById("main_img").src = image.url
+  image.url = image.url.replace("http","https");
   console.log(image.url);
   console.log("it is working!");
   
@@ -87,6 +88,9 @@ document.getElementById('file-picker').addEventListener('change', function(event
   document.body.style.backgroundColor = "#6ae368"
   document.body.btn.style.backgroundColor = "#000000"
   console.log(event);
-
+  console.log('before');
+  setTimeout(function(){
+    console.log('after');
+  },500);
   
 });
