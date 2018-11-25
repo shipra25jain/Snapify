@@ -108,9 +108,10 @@ document.getElementById('file-picker').addEventListener('change', function(event
   console.log('before');
   setTimeout(function(){
     console.log('after');
-  },500);
+  },1000);
   var newImg = "/app/images/";
   console.log(newImg.concat(image.name));
+  
   document.getElementById("main_img").src = newImg.concat(image.name);
   // readTextFile('/app/public/imagedataFile.txt')
 });
