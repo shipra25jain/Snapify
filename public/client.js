@@ -109,21 +109,7 @@ document.getElementById('file-picker').addEventListener('change', function(event
   var newImg = "/app/images/";
   console.log(newImg.concat(image.name));
   
-  setTimeout(function(){
-    document.getElementById("main_img").src = "/getimage";
-  }, 8000);
-  
-  // readTextFile('/app/public/imagedataFile.txt')
-  
-  
-  
-  setTimeout(function(){
-    
-    document.getElementById("playlist").src="/clearCache";
-    // var tt = "/clearCache";
-    
-    
-  }, 500);
+
   
   
       
