@@ -115,9 +115,13 @@ def upload():
               
               if ( i < 1):
                 resulttrack = result["playlists"]["items"][0]["name"].encode('utf-8').strip()
+                
+                
                 requestBody = {
                             "context_uri": result["playlists"]["items"][0]["uri"].encode('utf-8').strip()
                             }
+                
+                
                 print(requestBody)
                 
                 token = request.form['token']
