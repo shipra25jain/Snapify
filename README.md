@@ -1,7 +1,10 @@
+##Snapify
+
+The idea of project is to explore the music in an innovative way by creating a recommender system which can play the song depending upon your mood or surroundings captured in the input snap. I worked on this with my team-mates during Spotify Hackathon 2018. We integrated google cloud's vision api with couple of Spotify's api to build this.
+
 Flask / Python Spotify Sample
 ======================================================
-
-Click `"Show"` in the header to see your app live. Updates to your code will instantly deploy and update live.
+ Click `"Show"` in the header to see your app live. Updates to your code will instantly deploy and update live.
 
 Getting Started
 ------------
